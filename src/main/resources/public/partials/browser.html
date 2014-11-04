@@ -1,0 +1,12 @@
+<table class="table table-hover table-condensed">
+	<thead>
+		<tr>
+			<th>File</th>
+		</tr>
+	</thead>
+	<tr ng-repeat="file in browser.files">
+		<td><a ng-click="browser.click(file)"><span class="glyphicon"
+				ng-class="{'glyphicon-folder-close folder': file.directory, 'glyphicon-file file': !file.directory}"></span>
+				{{file.name}}</a></td>
+	</tr>
+</table>

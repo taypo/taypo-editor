@@ -3,17 +3,12 @@
 	var files = {};
 	var path = "";
 	app = angular.module('browser', []);
-	app.controller('BrowserController', [ '$http', function($http) {
+	app.controller('BrowserController', [ '$http', '$location', function($http, $location) {
 		var browser = this;
-		
-		/*
-		$http.get('/api/tree').success(function(data) {
-			browser.files = data;
-		});
-		*/
+
 		this.loadPath = function(relPath) {
 			path = relPath;
-			$http.get('/api/tree?relPath=' + path).success(function(data) {
+			$http.get('/api/tree?relPath=' + encodeURIComponent(path)).success(function(data) {
 				browser.files = data;
 			});
 		};
@@ -23,6 +18,7 @@
 				this.loadPath(file.relativePath);
 			} else {
 				// TODO open file
+				$location.path('/editor/' + encodeURIComponent(file.relativePath));
 			}
 		};
 		

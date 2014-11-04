@@ -9,3 +9,13 @@ body {
 .file {
 	color: #cdcdcd;
 }
+
+.ace_editor {
+	height: 600px;
+}
+
+[ng-click],
+[data-ng-click],
+[x-ng-click] {
+    cursor: pointer;
+}
