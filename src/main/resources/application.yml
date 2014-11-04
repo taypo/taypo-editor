@@ -1,0 +1,8 @@
+
+serve-path: /Users/bahadir/dev/kpss-puan
+
+ignore-filenames: .DS_Store,.hg,.hgcheck,.hgignore,_site
+ignore:
+    filenames:
+        - .DS_Store
+        - .hg
