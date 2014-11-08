@@ -23,7 +23,8 @@
 
 				    // Options
 				    //_editor.setReadOnly(true);
-				    
+				    _session.setUseWrapMode(true);
+				    //_renderer.adjustWrapLimit();
 				    _session.setMode(getMode($routeParams.file));
 				    _session.setUndoManager(new ace.UndoManager());
 				    //_renderer.setShowGutter(false);
