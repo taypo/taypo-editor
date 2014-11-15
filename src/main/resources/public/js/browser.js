@@ -18,7 +18,7 @@
 				$location.path('/browser/' + encodeURIComponent(file.relativePath));
 				//this.loadPath(file.relativePath);
 			} else {
-				$location.path('/editor/' + encodeURIComponent(file.relativePath));
+				$location.path('/viewer/' + encodeURIComponent(file.relativePath));
 			}
 		};
 		
