@@ -34,6 +34,10 @@
 				    // _session.on("change", function(){ ... });
 				    _editor.setTheme('ace/theme/github');
 				  };
+				  
+				  this.save = function() {
+					  $http.put('/api/resource?path=' + $routeParams.file, editor.content);
+				  }
 
 			} ]);
 }());

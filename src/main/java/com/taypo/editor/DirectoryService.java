@@ -15,9 +15,7 @@ import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController()
@@ -53,6 +51,21 @@ public class DirectoryService {
 		return readFile(path);
 	}
 	
+	@RequestMapping(value="/resource", method=RequestMethod.PUT) 
+	public void setResource(@RequestParam String path, @RequestBody String content) {
+		saveFile(path, content);
+	}
+	
+	private void saveFile(String path, String content) {
+		Path root = Paths.get(conf.getServePath());
+		try {
+			Files.write(root.resolve(path), content.getBytes(StandardCharsets.UTF_8));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 	private boolean check(Path path) {
 		if(conf.getIgonoredFileNames().contains(path.getFileName().toString()))
 			return false;
