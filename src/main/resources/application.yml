@@ -1,5 +1,5 @@
 
-serve-path: /tmp/test
+serve-path: /tmp/test-git
 
-ignore-filenames: .DS_Store,.hg,.hgcheck,.hgignore,_site
+ignore-filenames: .DS_Store,.hg,.hgcheck,.hgignore,_site,.git
 

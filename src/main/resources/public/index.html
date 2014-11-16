@@ -15,6 +15,9 @@
 </head>
 <body class="container">
 	<h1>Taypo Editor</h1>
+	<div class="panel panel-default" ng-controller="RepoController as repo">
+		<div class="panel-heading">Branch: {{repo.info.branch}} SCM Type: {{repo.info.type}}</div>
+	</div>
 	<div ng-view></div>
 </body>
 </html>

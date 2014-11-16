@@ -2,48 +2,43 @@
 	'use strict';
 
 	app = angular.module('editor', [ 'ui.ace' ]);
-	app.controller('EditorController', [
-			'$http',
-			'$location',
-			'$routeParams',
-			'$scope',
+	app.controller('EditorController', [ '$http', '$location', '$routeParams', '$scope',
 			function($http, $location, $routeParams, $scope) {
 				var editor = this;
 				this.content = "File content here!";
 
-				$http.get('/api/resource?path=' + $routeParams.file).success(
-						function(data) {
-							editor.content = data;
-						});
-				
-				$scope.aceLoaded = function(_editor){
-				    // Editor part
-				    var _session = _editor.getSession();
-				    var _renderer = _editor.renderer;
+				$http.get('/api/resource?path=' + $routeParams.file).success(function(data) {
+					editor.content = data;
+				});
 
-				    // Options
-				    //_editor.setReadOnly(true);
-				    _session.setUseWrapMode(true);
-				    //_renderer.adjustWrapLimit();
-				    _session.setMode(getMode($routeParams.file));
-				    _session.setUndoManager(new ace.UndoManager());
-				    //_renderer.setShowGutter(false);
+				$scope.aceLoaded = function(_editor) {
+					// Editor part
+					var _session = _editor.getSession();
+					var _renderer = _editor.renderer;
 
-				    // Events
-				    // _editor.on("changeSession", function(){ ... });
-				    // _session.on("change", function(){ ... });
-				    _editor.setTheme('ace/theme/github');
-				  };
-				  
-				  this.save = function() {
-					  $http.put('/api/resource?path=' + $routeParams.file, editor.content);
-				  }
+					// Options
+					// _editor.setReadOnly(true);
+					_session.setUseWrapMode(true);
+					// _renderer.adjustWrapLimit();
+					_session.setMode(getMode($routeParams.file));
+					_session.setUndoManager(new ace.UndoManager());
+					// _renderer.setShowGutter(false);
+
+					// Events
+					// _editor.on("changeSession", function(){ ... });
+					// _session.on("change", function(){ ... });
+					_editor.setTheme('ace/theme/github');
+				};
+
+				this.save = function() {
+					$http.put('/api/resource?path=' + $routeParams.file, editor.content);
+				}
 
 			} ]);
 }());
 
 function getMode(filename) {
-	switch(ext = filename.split('.').pop()) {
+	switch (ext = filename.split('.').pop()) {
 	case 'md':
 		return 'ace/mode/markdown';
 	case 'js':

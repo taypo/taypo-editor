@@ -9,7 +9,7 @@
 			controller : 'BrowserController as browser'
 		}).when('/viewer/:file', {
 			templateUrl : 'partials/viewer.html',
-			controller : 'ViewerController as viewer'			
+			controller : 'ViewerController as viewer'
 		}).when('/editor/:file', {
 			templateUrl : 'partials/editor.html',
 			controller : 'EditorController as editor'
@@ -17,5 +17,13 @@
 			redirectTo : '/browser/'
 		});
 	} ]);
+
+	app.controller('RepoController', [ '$http', '$location', '$routeParams', '$scope',
+			function($http, $location, $routeParams, $scope) {
+				var repo = this;
+				$http.get('/api/repo/info').success(function(data) {
+					repo.info = data;
+				});
+			} ]);
 
 }());
