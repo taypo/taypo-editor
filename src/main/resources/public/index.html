@@ -8,6 +8,8 @@
 <script src="/lib/angular/angular-route.min.js"></script>
 <script src="/lib/ace/src-min-noconflict/ace.js"></script>
 <script src="/lib/ui.ace/ui-ace.js"></script>
+<script src="/lib/marked/marked.min.js"></script>
+<script src="/lib/angular-marked/angular-marked.min.js"></script>
 <script src="/js/app.js"></script>
 <script src="/js/browser.js"></script>
 <script src="/js/viewer.js"></script>
@@ -16,7 +18,7 @@
 <body class="container">
 	<h1>Taypo Editor</h1>
 	<div class="panel panel-default" ng-controller="RepoController as repo">
-		<div class="panel-heading">Branch: {{repo.info.branch}} SCM Type: {{repo.info.type}}</div>
+		<div class="panel-heading"><strong>Branch:</strong> {{repo.info.branch}} <strong>Repo Type:</strong> {{repo.info.type}}</div>
 	</div>
 	<div ng-view></div>
 </body>

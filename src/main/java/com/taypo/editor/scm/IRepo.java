@@ -4,8 +4,12 @@ import java.io.File;
 import java.io.IOException;
 
 import org.eclipse.jgit.api.Git;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 abstract class IRepo {
+	
+	private static Logger log = LoggerFactory.getLogger(IRepo.class);
 
 	public static IRepo from(String path) {
 		Git git = checkGit(path);
@@ -20,7 +24,7 @@ abstract class IRepo {
 		try {
 			return Git.open(new File(path));
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.info("Path: " + path + " is not a git repository");
 			return null;
 		}
 	}

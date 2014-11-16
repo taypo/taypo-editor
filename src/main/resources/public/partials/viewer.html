@@ -5,8 +5,9 @@
 		</button>
 	</div>
 </div>
-<pre>
+<pre ng-hide="viewer.isMarkdown">
 	<code>
 {{viewer.content}}
 </code>
 </pre>
+<div marked="viewer.content" ng-show="viewer.isMarkdown"></div>

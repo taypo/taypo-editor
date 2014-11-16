@@ -1,7 +1,7 @@
 (function() {
 	'use strict';
 
-	window.app = angular.module('taypo-editor', [ 'ngRoute', 'browser', 'viewer', 'editor' ]);
+	window.app = angular.module('taypo-editor', [ 'ngRoute', 'browser', 'viewer', 'editor', 'hc.marked' ]);
 
 	app.config([ '$routeProvider', function($routeProvider) {
 		$routeProvider.when('/browser/:folder?', {
