@@ -19,3 +19,7 @@ body {
 [x-ng-click] {
     cursor: pointer;
 }
+
+.breadcrumb {
+	margin-bottom: 0px;
+}
