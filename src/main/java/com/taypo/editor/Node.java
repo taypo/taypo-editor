@@ -4,15 +4,17 @@ public class Node implements Comparable<Node> {
 	private String name;
 	private String relativePath;
 	private boolean isDirectory;
+	private boolean binary;
 
 	public Node() {
 	}
 
-	public Node(String name, String relativePath, boolean isDirectory) {
+	public Node(String name, String relativePath, boolean isDirectory, boolean binary) {
 		super();
 		this.name = name;
 		this.relativePath = relativePath;
 		this.isDirectory = isDirectory;
+		this.binary = binary;
 	}
 
 	public String getName() {
@@ -37,6 +39,14 @@ public class Node implements Comparable<Node> {
 
 	public void setDirectory(boolean isDirectory) {
 		this.isDirectory = isDirectory;
+	}
+
+	public boolean isBinary() {
+		return binary;
+	}
+
+	public void setBinary(boolean binary) {
+		this.binary = binary;
 	}
 
 	@Override

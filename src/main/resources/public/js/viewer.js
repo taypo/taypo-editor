@@ -9,13 +9,20 @@
 				this.file = $routeParams.file;
 				this.frontMatter = '';
 				this.isMarkdown = this.file.split('.').pop() == 'md';
-
-				$http.get('/api/resource?path=' + viewer.file).success(function(data) {
-					viewer.content = data;
-					if (viewer.isMarkdown) {
-						// Remove front matter (jekyll)
-						viewer.content = viewer.content.replace(/---[\s\S]*?---/, '');
-					}
+				
+				var node = $http.get('/api/node?relPath=' + viewer.file).success(function(data) {
+					if(data.binary) {
+						viewer.content = "Binary File";
+						viewer.node = data;
+					} else {
+						$http.get('/api/resource?path=' + viewer.file).success(function(data) {
+							viewer.content = data;
+							if (viewer.isMarkdown) {
+								// Remove front matter (jekyll)
+								viewer.content = viewer.content.replace(/---[\s\S]*?---/, '');
+							}
+						});
+					}					
 				});
 
 				this.edit = function() {
